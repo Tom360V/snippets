@@ -11,11 +11,11 @@
  * check this size of both files:
  *   $ size a1.exe
  *      text    data     bss     dec     hex filename
- *     37020    1768    2608   41396    a1b4 x.exe
+ *     37020    1748    2608   41376    a1a0 x.exe
  *
  *   $ size a2.exe
  *      text    data     bss     dec     hex filename
- *     37020    1768    2608   41396    a1b4 x.exe
+ *     37020    1748    2608   41376    a1a0 z.exe
  *
  * Both files have the same size... interresting?
  * complete table is optimized?
@@ -23,12 +23,12 @@
  
 #include <stdio.h>
 
-#define USE_FUNCTION_POINTER
+//#define USE_FUNCTION_POINTER
 
 #ifdef USE_FUNCTION_POINTER
-    #define MY_TEXT             "using function pointer"
+    #define MY_TEXT             "using function pointer\r\n"
 #else
-    #define MY_TEXT             "NOT!!!function pointer"
+    #define MY_TEXT             "NOT!!!function pointer\r\n"
 #endif
 
 /******************************************************************************
