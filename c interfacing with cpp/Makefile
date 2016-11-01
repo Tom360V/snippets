@@ -4,8 +4,8 @@ SRC_C=c.c
 SRC_CPP=cpp.cpp c2cpp.cpp
 APP:=app.exe
 
-OBJSC:=$(SRC_C:.c=.o)
-OBJSCPP=$(SRC_CPP:.cpp=.o)
+OBJS:=$(SRC_C:.c=.c.o)
+OBJS+=$(SRC_CPP:.cpp=.cpp.o)
 
 all: pre $(APP)
 	@echo $(HEADER)
@@ -14,30 +14,31 @@ all: pre $(APP)
 clean:
 	@echo $(HEADER)
 	@echo Clean
-	rm -f $(OBJSC)
-	rm -f $(OBJSCPP)
+	rm -f $(OBJS)
 	rm -f $(APP)
 	
 .PHONY: clean pre app
 
 pre:
 	@echo $(HEADER)
-	@echo C: $(OBJSC)
-	@echo CPP: $(OBJSCPP)
+	@echo "PROJECT NAME:" $(APP)
+	@echo "OBJECTS:"
+	@echo -e  $(foreach dir,$(OBJS), "\r              $(dir)\r\n")
+
 	
-$(APP): $(OBJSC) $(OBJSCPP)
+$(APP): $(OBJS) 
 	@echo $(HEADER)
 	@echo "Build APP: $@"
 	@echo "Use: $^"
 	gcc -Wall $^ -o $@
 	
-%.o : %.c
+%.c.o : %.c
 	@echo $(HEADER)
 	@echo "Build C: $< $@"
 	gcc -Wall -O0 -c $^ -o $@
 	@echo ' '
 
-%.o : %.cpp
+%.cpp.o : %.cpp
 	@echo $(HEADER)
 	@echo "Build CPP: $< $@"
 	g++ -Wall -O0 -c $^ -o $@
