@@ -1,6 +1,25 @@
 # Unittest with google test
 source: https://github.com/google/googletest
 
+
+## Test structure
+root
+ |-module
+ |  |-inc
+ |  |  |-moduleX.h          //Headerfile of moduleX
+ |  |
+ |  |-src
+ |  |  |-moduleX.c          //Sourcefile of moduleX
+ |  |
+ |  |-CMakeList.txt         //cmake instructions how to build the module
+ |  |
+ |  |-test
+ |  |  |-test_moduleX.h     //Test to validate moduleX
+ |  |  |-CMakeList.txt      //cmake with instructions to build the test
+                            // where he can find CMakeList.txt to build the Module Under Test
+                            // and instruction where to find the testframework
+
+
 ## configure googletest:
     $ cd /usr/lib
     $ git clone https://github.com/google/googletest
