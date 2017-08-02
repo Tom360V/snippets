@@ -3,22 +3,22 @@ source: https://github.com/google/googletest
 
 
 ## Test structure
+```
 root
- |-module
- |  |-inc
- |  |  |-moduleX.h          //Headerfile of moduleX
- |  |
- |  |-src
- |  |  |-moduleX.c          //Sourcefile of moduleX
- |  |
- |  |-CMakeList.txt         //cmake instructions how to build the module
- |  |
- |  |-test
- |  |  |-test_moduleX.h     //Test to validate moduleX
- |  |  |-CMakeList.txt      //cmake with instructions to build the test
-                            // where he can find CMakeList.txt to build the Module Under Test
-                            // and instruction where to find the testframework
-
+ |--module
+ |   |--inc
+ |   |   |-moduleX.h          //Headerfile of moduleX
+ |   |
+ |   |--src
+ |   |   |-moduleX.c          //Sourcefile of moduleX
+ |   |
+ |   |--test
+ |   |   |-test_moduleX.h     //Test to validate moduleX
+ |   |   |-CMakeList.txt      //cmake with instructions to build the test
+ |   |                        //  where he can find CMakeList.txt to build the Module Under Test
+ |   |                        //  and instruction where to find the testframework
+ |   |--CMakeList.txt         //cmake instructions how to build the module
+```
 
 ## configure googletest:
     $ cd /usr/lib
