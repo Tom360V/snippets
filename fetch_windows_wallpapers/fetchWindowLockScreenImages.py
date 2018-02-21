@@ -3,6 +3,7 @@ import os
 import shutil
 
 def copyFiles(src, dst, size):
+    print "src:" + src
     for f in os.listdir(src) :
         b = os.path.getsize(src+f)
         print "check file: " + f + " size: " + str(b)
@@ -36,7 +37,7 @@ def renameFiles(path):
             ext = splitted[1]
         
         if ext in ext_to_skip:
-            print "skip " + f
+            print "skip '" + f + "'"
         else:
 #            if( isJPG(f) == False ):
 #                print f + " is not a jpg"
@@ -50,8 +51,9 @@ def renameFiles(path):
             os.rename(f, newName)
             print "renamed " + f + " to " + newName
             
-src = "/cygdrive/c/Users/tkoene/AppData/Local/Packages/Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy/LocalState/Assets/"
-dst = "./"
-copyFiles(src, dst, 100000)
-    
-renameFiles(dst)
+if __name__ == "__main__":
+    src = "/cygdrive/c/Users/tkoene/AppData/Local/Packages/Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy/LocalState/Assets/"
+    dst = "./"
+    copyFiles(src, dst, 100000)
+    renameFiles(dst)
+    print "done"
